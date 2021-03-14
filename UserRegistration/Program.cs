@@ -25,6 +25,13 @@ namespace UserRegistration
             return result;
         }
 
+        public bool validatePassword(string password)
+        {
+           string pattern = @"^.{8,}$";
+            bool result = Regex.IsMatch(password, pattern);
+            return result;
+        }
+
 
 
             static void Main(string[] args)
@@ -40,6 +47,8 @@ namespace UserRegistration
             Console.WriteLine("Email name validation result: " + result);
             result = program.validatePhoneNumber("91 7708796223");
             Console.WriteLine("Phone Number validation result: " + result);
+            result = program.validatePassword("sanjanaks");
+            Console.WriteLine("Password validation result: " + result);
         }
     }
 }
