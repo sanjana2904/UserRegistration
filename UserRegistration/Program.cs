@@ -18,7 +18,16 @@ namespace UserRegistration
             bool result = Regex.IsMatch(name, pattern);
             return result;
         }
-        static void Main(string[] args)
+        public bool validatePhoneNumber(string number)
+        {
+            string pattern = @"^\d{2}\s\d{10}$";
+            bool result = Regex.IsMatch(number, pattern);
+            return result;
+        }
+
+
+
+            static void Main(string[] args)
         {
             Console.WriteLine("Welcome to User Registration");
             Console.WriteLine("Welcome to unit testing of user registration");
@@ -29,6 +38,8 @@ namespace UserRegistration
             Console.WriteLine("First name validation result: " + result);
             result = program.validateEmail("sanju@gmail.com");
             Console.WriteLine("Email name validation result: " + result);
+            result = program.validatePhoneNumber("91 7708796223");
+            Console.WriteLine("Phone Number validation result: " + result);
         }
     }
 }
