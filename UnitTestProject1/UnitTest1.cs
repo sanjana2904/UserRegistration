@@ -82,7 +82,7 @@ namespace UnitTestProject1
         public void TestInValidPassword()
         {
             Program program = new Program();
-            bool result = program.validatePassword("sanjana");
+            bool result = program.validatePassword("sanju");
             Assert.AreEqual(false, result);
         }
 
@@ -90,7 +90,7 @@ namespace UnitTestProject1
         public void TestValidUppercase()
         {
             Program program = new Program();
-            bool result = program.validateUppercase("saNjanaks");
+            bool result = program.validateUppercase("sanJanaks");
             Assert.AreEqual(true, result);
         }
 
@@ -98,7 +98,7 @@ namespace UnitTestProject1
         public void TestInValidUppercase()
         {
             Program program = new Program();
-            bool result = program.validateUppercase("sanjana");
+            bool result = program.validateUppercase("sanjanaks");
             Assert.AreEqual(false, result);
         }
 
@@ -106,7 +106,7 @@ namespace UnitTestProject1
         public void TestValidNumericcase()
         {
             Program program = new Program();
-            bool result = program.validateNumericcase("sanjana5Ks");
+            bool result = program.validateNumericcase("sanJana5Ks");
             Assert.AreEqual(true, result);
         }
 
@@ -114,9 +114,26 @@ namespace UnitTestProject1
         public void TestInValidNumericcase()
         {
             Program program = new Program();
-            bool result = program.validateNumericcase("sanjana5ks");
+            bool result = program.validateNumericcase("sanJanaKs");
+            Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
+        public void TestValidSpecialCharactercase()
+        {
+            Program program = new Program();
+            bool result = program.validateSpecialCharactercase("sanJana5*ks");
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void TestInValidSpecialCharactercase()
+        {
+            Program program = new Program();
+            bool result = program.validateSpecialCharactercase("sanJana5Ks");
             Assert.AreEqual(false, result);
         }
     }
+   
 }
 

@@ -46,6 +46,13 @@ namespace UserRegistration
             return result;
         }
 
+        public bool validateSpecialCharactercase(string name)
+        {
+            string pattern = @"^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()]).{8,}$";
+            bool result = Regex.IsMatch(name, pattern);
+            return result;
+        }
+
 
         static void Main(string[] args)
         {
@@ -62,10 +69,12 @@ namespace UserRegistration
             Console.WriteLine("Phone Number validation result: " + result);
             result = program.validatePassword("sanjanaks");
             Console.WriteLine("Password validation result: " + result);
-            result = program.validateUppercase("saNjanaks");
+            result = program.validateUppercase("sanJanaks");
             Console.WriteLine("Uppercase validation result: " + result);
-            result = program.validateNumericcase("sanjana5ks");
+            result = program.validateNumericcase("sanJana5Ks");
             Console.WriteLine("Numeric case validation result: " + result);
+            result = program.validateSpecialCharactercase("sanJana5*Ks");
+            Console.WriteLine("Special Character case validation result: " + result);
         }
     }
 }
