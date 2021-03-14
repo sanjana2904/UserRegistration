@@ -5,10 +5,10 @@ namespace UserRegistration
 {
     public class Program
     {
-        public bool validateFirstName(string firstName)
+        public bool validateName(string name)
         {
             string pattern = @"^[A-Z]\w{2,}$";
-            bool result = Regex.IsMatch(firstName, pattern);
+            bool result = Regex.IsMatch(name, pattern);
             return result;
         }
         static void Main(string[] args)
@@ -18,7 +18,7 @@ namespace UserRegistration
             bool result;
 
             Program program = new Program();
-            result = program.validateFirstName("Sanjana");
+            result = program.validateName("Sanjana");
             Console.WriteLine("First name validation result: " + result);
         }
     }
