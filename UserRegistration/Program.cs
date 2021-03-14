@@ -11,6 +11,13 @@ namespace UserRegistration
             bool result = Regex.IsMatch(name, pattern);
             return result;
         }
+
+        public bool validateEmail(string name)
+        {
+            string pattern = @"^[\w]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+";
+            bool result = Regex.IsMatch(name, pattern);
+            return result;
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to User Registration");
@@ -20,6 +27,8 @@ namespace UserRegistration
             Program program = new Program();
             result = program.validateName("Sanjana");
             Console.WriteLine("First name validation result: " + result);
+            result = program.validateEmail("sanju@gmail.com");
+            Console.WriteLine("Email name validation result: " + result);
         }
     }
 }
