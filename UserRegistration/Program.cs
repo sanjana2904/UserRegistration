@@ -39,6 +39,13 @@ namespace UserRegistration
             return result;
         }
 
+        public bool validateNumericcase(string name)
+        {
+            string pattern = @"^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
+            bool result = Regex.IsMatch(name, pattern);
+            return result;
+        }
+
 
         static void Main(string[] args)
         {
@@ -57,6 +64,8 @@ namespace UserRegistration
             Console.WriteLine("Password validation result: " + result);
             result = program.validateUppercase("saNjanaks");
             Console.WriteLine("Uppercase validation result: " + result);
+            result = program.validateNumericcase("sanjana5ks");
+            Console.WriteLine("Numeric case validation result: " + result);
         }
     }
 }
