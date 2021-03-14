@@ -32,9 +32,15 @@ namespace UserRegistration
             return result;
         }
 
+        public bool validateUppercase(string uppercase)
+        {
+            string pattern = @"^(?=.*[A-Z]).{8,}$";
+            bool result = Regex.IsMatch(uppercase, pattern);
+            return result;
+        }
 
 
-            static void Main(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("Welcome to User Registration");
             Console.WriteLine("Welcome to unit testing of user registration");
@@ -49,6 +55,8 @@ namespace UserRegistration
             Console.WriteLine("Phone Number validation result: " + result);
             result = program.validatePassword("sanjanaks");
             Console.WriteLine("Password validation result: " + result);
+            result = program.validateUppercase("saNjanaks");
+            Console.WriteLine("Uppercase validation result: " + result);
         }
     }
 }
