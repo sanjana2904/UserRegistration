@@ -5,9 +5,10 @@ namespace UserRegistration
 {
     public class Program
     {
-        public bool validateFirstName(string firstName)
+        public bool validateName(string name)
         {
             string pattern = @"^[A-Z]\w{2,}$";
+
             bool result = Regex.IsMatch(firstName, pattern);
             if(!result)
             {
@@ -16,6 +17,48 @@ namespace UserRegistration
             return result;
         }
 
+        public bool validateEmail(string name)
+        {
+            string pattern = @"^[\w]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+";
+            bool result = Regex.IsMatch(name, pattern);
+            return result;
+        }
+        public bool validatePhoneNumber(string number)
+        {
+            string pattern = @"^\d{2}\s\d{10}$";
+            bool result = Regex.IsMatch(number, pattern);
+            return result;
+        }
+
+        public bool validatePassword(string password)
+        {
+           string pattern = @"^.{8,}$";
+            bool result = Regex.IsMatch(password, pattern);
+            return result;
+        }
+
+        public bool validateUppercase(string uppercase)
+        {
+            string pattern = @"^(?=.*[A-Z]).{8,}$";
+            bool result = Regex.IsMatch(uppercase, pattern);
+            return result;
+        }
+
+        public bool validateNumericcase(string name)
+        {
+            string pattern = @"^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
+            bool result = Regex.IsMatch(name, pattern);
+            return result;
+        }
+
+        public bool validateSpecialCharactercase(string name)
+        {
+            string pattern = @"^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()]).{8,}$";
+            bool result = Regex.IsMatch(name, pattern);
+            return result;
+        }
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to User Registration");
@@ -23,6 +66,7 @@ namespace UserRegistration
             bool result = false;
 
             Program program = new Program();
+
             try
             {
                 result = program.validateFirstName("Sanjana");
@@ -32,7 +76,21 @@ namespace UserRegistration
                 Console.WriteLine("Exception caught"); 
             }
             
+
+            
             Console.WriteLine("First name validation result: " + result);
+            result = program.validateEmail("sanju@gmail.com");
+            Console.WriteLine("Email name validation result: " + result);
+            result = program.validatePhoneNumber("91 7708796223");
+            Console.WriteLine("Phone Number validation result: " + result);
+            result = program.validatePassword("sanjanaks");
+            Console.WriteLine("Password validation result: " + result);
+            result = program.validateUppercase("sanJanaks");
+            Console.WriteLine("Uppercase validation result: " + result);
+            result = program.validateNumericcase("sanJana5Ks");
+            Console.WriteLine("Numeric case validation result: " + result);
+            result = program.validateSpecialCharactercase("sanJana5*Ks");
+            Console.WriteLine("Special Character case validation result: " + result);
         }
     }
 }
