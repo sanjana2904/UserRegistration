@@ -8,7 +8,12 @@ namespace UserRegistration
         public bool validateName(string name)
         {
             string pattern = @"^[A-Z]\w{2,}$";
-            bool result = Regex.IsMatch(name, pattern);
+
+            bool result = Regex.IsMatch(firstName, pattern);
+            if(!result)
+            {
+                throw new UserException("FirstName Validation Failed");
+            }
             return result;
         }
 
@@ -58,10 +63,21 @@ namespace UserRegistration
         {
             Console.WriteLine("Welcome to User Registration");
             Console.WriteLine("Welcome to unit testing of user registration");
-            bool result;
+            bool result = false;
 
             Program program = new Program();
-            result = program.validateName("Sanjana");
+
+            try
+            {
+                result = program.validateFirstName("Sanjana");
+            }
+            catch (UserException)
+            {
+                Console.WriteLine("Exception caught"); 
+            }
+            
+
+            
             Console.WriteLine("First name validation result: " + result);
             result = program.validateEmail("sanju@gmail.com");
             Console.WriteLine("Email name validation result: " + result);
